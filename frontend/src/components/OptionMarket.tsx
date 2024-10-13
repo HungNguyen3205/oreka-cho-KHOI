@@ -4,27 +4,20 @@ import { ethers } from 'ethers';
 import OptionButton from "../components/OptionButton";
 import Dropdown from "../components/Dropdown";
 import { UP_DOWN_TYPE } from "../contracts/types/index";
-import UserList from "../views/plays/UserList";
 import { useAppSelector } from "../reduxs/hooks";
-import ContractBalance from './Contractbalance';
 import { SMART_CONTRACT_ADDRESS } from '../configs/constants';
 import BinaryOptionMarketABI from '../contracts/abis/BinaryOptionMarketABI.json';
-import { title } from 'process';
 
 function OptionMarket() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState(''); // 'owner' or 'customer'
-  const [rewardClaimed, setRewardClaimed] = useState(false);
   const [rewardsWon, setRewardsWon] = useState(0);
-  const [countDown, setCountDown] = useState(0);
-  const [headTail, setHeadTail] = useState<UP_DOWN_TYPE | undefined>();
   const [bidAmount, setBidAmount] = useState("");
   const [coinData, setCoinData] = useState([]);
   const [smAddress, setSmAddress] = useState<string>("");
   const [contract, setContract] = useState<any>(true);
   const [web3Provider, setWeb3Provider] = useState<ethers.providers.Web3Provider | null>(null);
   const toast = useToast();
-  const { walletInfo } = useAppSelector((state) => state.account);
 
   // Fetch coin data on component mount
   useEffect(() => {

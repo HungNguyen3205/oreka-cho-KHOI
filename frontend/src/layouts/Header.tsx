@@ -28,7 +28,7 @@ function Header() {
       direction="column"
       mt={-40}
     >
-      {!walletAddress && ( // Chỉ hiển thị nút nếu chưa kết nối ví
+      {!walletAddress && ( 
         <Button
           onClick={handleConnect}
           bg="#FFA500"
@@ -37,7 +37,7 @@ function Header() {
           mt={200}
           mb={3}
         >
-          Connect MetaMask
+          Show infor
         </Button>
       )}
 
